@@ -8,9 +8,13 @@ Sublime Text plugin for converting between cases:
 * `lowerCamelCase`
 * `TitleCamelCase`
 * `lower_snake_case`
+* `Title_Snake_Case`
 * `UPPER_SNAKE_CASE`
 * `lower-kebab-case`
+* `Title-Kebab-Case`
 * `UPPER-KEBAB-CASE`
+* lower initials: `li`
+* upper initials: `UI`
 
 ## Installation
 

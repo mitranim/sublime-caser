@@ -24,6 +24,10 @@
     "command": "caser_lower_snake_case",
   },
   {
+    "caption": "Caser: Title_Snake_Case",
+    "command": "caser_title_snake_case",
+  },
+  {
     "caption": "Caser: UPPER_SNAKE_CASE",
     "command": "caser_upper_snake_case",
   },
@@ -32,7 +36,19 @@
     "command": "caser_lower_kebab_case",
   },
   {
+    "caption": "Caser: Title-Kebab-Case",
+    "command": "caser_title_kebab_case",
+  },
+  {
     "caption": "Caser: UPPER-KEBAB-CASE",
     "command": "caser_upper_kebab_case",
+  },
+  {
+    "caption": "Caser: lower initials (li)",
+    "command": "caser_lower_initials",
+  },
+  {
+    "caption": "Caser: upper initials (UI)",
+    "command": "caser_upper_initials",
   },
 ]

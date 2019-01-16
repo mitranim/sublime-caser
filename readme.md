@@ -1,3 +1,10 @@
+
+## TODO
+
+noop in case of empty selection (don't add ⌘Z)
+
+
+
 ## Overview
 
 Sublime Text plugin for converting between cases:

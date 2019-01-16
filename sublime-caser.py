@@ -1,19 +1,19 @@
 import re
 import sublime_plugin
 
-
 EDGE_RE = re.compile(r'''
-    [A-Z0-9]+(?=\W|_|$)
+    [A-Z0-9]+(?=\W|_|$)                 # UPPER CASE
     |
-    [A-Z][a-z0-9]*(?=[A-Z]|\W|_|$)
+    [A-Z0-9]+(?=[A-Z][a-z]|\W|_|$)      # ABBRCamelCase
     |
-    [a-z0-9]+(?=[A-Z]|\W|_|$)
+    [A-Z][a-z0-9]*(?=[A-Z]|\W|_|$)      # Title Case
     |
-    [A-Z0-9]+(?=[a-z]|\W|_|$)
+    [a-z0-9]+(?=[A-Z]|\W|_|$)           # lower case
     |
-    [A-Za-z0-9]+(?=\W|_|$)
+    [A-Z0-9]+(?=[a-z]|\W|_|$)           # ?
+    |
+    [A-Za-z0-9]+(?=\W|_|$)              # ?
 ''', re.VERBOSE)
-
 
 def to_lower_sentence_case(text): return ' '.join(m.group().lower() for m in EDGE_RE.finditer(text))
 def to_title_sentence_case(text): return ' '.join(m.group().title() for m in EDGE_RE.finditer(text))
@@ -30,21 +30,19 @@ def to_lower_camel_case(text):
         i += 1
     return ''.join(words)
 
-def to_title_camel_case(text): return ''.join(m.group().title() for m in EDGE_RE.finditer(text))
-def to_lower_snake_case(text): return '_'.join(m.group().lower() for m in EDGE_RE.finditer(text))
-def to_title_snake_case(text): return '_'.join(m.group().title() for m in EDGE_RE.finditer(text))
-def to_upper_snake_case(text): return '_'.join(m.group().upper() for m in EDGE_RE.finditer(text))
-def to_lower_kebab_case(text): return '-'.join(m.group().lower() for m in EDGE_RE.finditer(text))
-def to_title_kebab_case(text): return '-'.join(m.group().title() for m in EDGE_RE.finditer(text))
-def to_upper_kebab_case(text): return '-'.join(m.group().upper() for m in EDGE_RE.finditer(text))
-def to_lower_initials(text):   return ''.join(m.group().lower()[0] for m in EDGE_RE.finditer(text))
-def to_upper_initials(text):   return ''.join(m.group().upper()[0] for m in EDGE_RE.finditer(text))
-
+def to_title_camel_case(text): return ''. join(m.group().title()    for m in EDGE_RE.finditer(text))
+def to_lower_snake_case(text): return '_'.join(m.group().lower()    for m in EDGE_RE.finditer(text))
+def to_title_snake_case(text): return '_'.join(m.group().title()    for m in EDGE_RE.finditer(text))
+def to_upper_snake_case(text): return '_'.join(m.group().upper()    for m in EDGE_RE.finditer(text))
+def to_lower_kebab_case(text): return '-'.join(m.group().lower()    for m in EDGE_RE.finditer(text))
+def to_title_kebab_case(text): return '-'.join(m.group().title()    for m in EDGE_RE.finditer(text))
+def to_upper_kebab_case(text): return '-'.join(m.group().upper()    for m in EDGE_RE.finditer(text))
+def to_lower_initials  (text): return ''. join(m.group().lower()[0] for m in EDGE_RE.finditer(text))
+def to_upper_initials  (text): return ''. join(m.group().upper()[0] for m in EDGE_RE.finditer(text))
 
 def replace_by(view, edit, fun):
     for region in view.sel():
         view.replace(edit, region, fun(view.substr(region)))
-
 
 def cmd(name, fun):
     class cmd(sublime_plugin.TextCommand):
@@ -52,7 +50,6 @@ def cmd(name, fun):
             replace_by(self.view, edit, fun)
     cmd.__name__ = name
     return cmd
-
 
 caser_lower_sentence_case = cmd('caser_lower_sentence_case', to_lower_sentence_case)
 caser_title_sentence_case = cmd('caser_title_sentence_case', to_title_sentence_case)

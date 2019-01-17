@@ -42,6 +42,8 @@ def to_upper_initials  (text): return ''. join(m.group().upper()[0] for m in EDG
 
 def replace_by(view, edit, fun):
     for region in view.sel():
+        if region.empty():
+            continue
         view.replace(edit, region, fun(view.substr(region)))
 
 def cmd(name, fun):

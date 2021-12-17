@@ -15,12 +15,12 @@ EDGE_RE = re.compile(r'''
     [A-Za-z0-9]+(?=\W|_|$)              # ?
 ''', re.VERBOSE)
 
-def to_lower_sentence_case(text): return ' '.join(m.group().lower() for m in EDGE_RE.finditer(text))
-def to_title_sentence_case(text): return ' '.join(m.group().title() for m in EDGE_RE.finditer(text))
-def to_upper_sentence_case(text): return ' '.join(m.group().upper() for m in EDGE_RE.finditer(text))
+def to_lower_sentence_case(val): return ' '.join(m.group().lower() for m in EDGE_RE.finditer(val))
+def to_title_sentence_case(val): return ' '.join(m.group().title() for m in EDGE_RE.finditer(val))
+def to_upper_sentence_case(val): return ' '.join(m.group().upper() for m in EDGE_RE.finditer(val))
 
-def to_lower_camel_case(text):
-    words = EDGE_RE.findall(text)
+def to_lower_camel_case(val):
+    words = EDGE_RE.findall(val)
     if len(words) < 1:
         return ''
     words[0] = words[0].lower()
@@ -30,15 +30,30 @@ def to_lower_camel_case(text):
         i += 1
     return ''.join(words)
 
-def to_title_camel_case(text): return ''. join(m.group().title()    for m in EDGE_RE.finditer(text))
-def to_lower_snake_case(text): return '_'.join(m.group().lower()    for m in EDGE_RE.finditer(text))
-def to_title_snake_case(text): return '_'.join(m.group().title()    for m in EDGE_RE.finditer(text))
-def to_upper_snake_case(text): return '_'.join(m.group().upper()    for m in EDGE_RE.finditer(text))
-def to_lower_kebab_case(text): return '-'.join(m.group().lower()    for m in EDGE_RE.finditer(text))
-def to_title_kebab_case(text): return '-'.join(m.group().title()    for m in EDGE_RE.finditer(text))
-def to_upper_kebab_case(text): return '-'.join(m.group().upper()    for m in EDGE_RE.finditer(text))
-def to_lower_initials  (text): return ''. join(m.group().lower()[0] for m in EDGE_RE.finditer(text))
-def to_upper_initials  (text): return ''. join(m.group().upper()[0] for m in EDGE_RE.finditer(text))
+def to_title_camel_case(val): return ''. join(m.group().title()    for m in EDGE_RE.finditer(val))
+
+def to_lower_snake_case(val): return '_'.join(m.group().lower()    for m in EDGE_RE.finditer(val))
+
+def to_title_snake_case(val):
+    words = EDGE_RE.findall(val)
+    if len(words) < 1:
+        return ''
+    words[0] = words[0].title()
+    i = 1
+    while i < len(words):
+        words[i] = words[i].lower()
+        i += 1
+    return '_'.join(words)
+
+# def to_title_snake_case(val): return '_'.join(m.group().title()    for m in EDGE_RE.finditer(val))
+def to_upper_snake_case(val): return '_'.join(m.group().upper()    for m in EDGE_RE.finditer(val))
+
+def to_lower_kebab_case(val): return '-'.join(m.group().lower()    for m in EDGE_RE.finditer(val))
+def to_title_kebab_case(val): return '-'.join(m.group().title()    for m in EDGE_RE.finditer(val))
+def to_upper_kebab_case(val): return '-'.join(m.group().upper()    for m in EDGE_RE.finditer(val))
+
+def to_lower_initials  (val): return ''. join(m.group().lower()[0] for m in EDGE_RE.finditer(val))
+def to_upper_initials  (val): return ''. join(m.group().upper()[0] for m in EDGE_RE.finditer(val))
 
 def replace_by(view, edit, fun):
     for region in view.sel():

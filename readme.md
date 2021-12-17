@@ -8,7 +8,7 @@ Sublime Text plugin for converting between cases:
 * `lowerCamelCase`
 * `TitleCamelCase`
 * `lower_snake_case`
-* `Title_Snake_Case`
+* `Title_snake_sase`
 * `UPPER_SNAKE_CASE`
 * `lower-kebab-case`
 * `Title-Kebab-Case`

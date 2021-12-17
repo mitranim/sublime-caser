@@ -1,54 +1,15 @@
 [
-  {
-    "caption": "Caser: lower sentence case",
-    "command": "caser_lower_sentence_case",
-  },
-  {
-    "caption": "Caser: Title Sentence Case",
-    "command": "caser_title_sentence_case",
-  },
-  {
-    "caption": "Caser: UPPER SENTENCE CASE",
-    "command": "caser_upper_sentence_case",
-  },
-  {
-    "caption": "Caser: lowerCamelCase",
-    "command": "caser_lower_camel_case",
-  },
-  {
-    "caption": "Caser: TitleCamelCase",
-    "command": "caser_title_camel_case",
-  },
-  {
-    "caption": "Caser: lower_snake_case",
-    "command": "caser_lower_snake_case",
-  },
-  {
-    "caption": "Caser: Title_Snake_Case",
-    "command": "caser_title_snake_case",
-  },
-  {
-    "caption": "Caser: UPPER_SNAKE_CASE",
-    "command": "caser_upper_snake_case",
-  },
-  {
-    "caption": "Caser: lower-kebab-case",
-    "command": "caser_lower_kebab_case",
-  },
-  {
-    "caption": "Caser: Title-Kebab-Case",
-    "command": "caser_title_kebab_case",
-  },
-  {
-    "caption": "Caser: UPPER-KEBAB-CASE",
-    "command": "caser_upper_kebab_case",
-  },
-  {
-    "caption": "Caser: lower initials (li)",
-    "command": "caser_lower_initials",
-  },
-  {
-    "caption": "Caser: upper initials (UI)",
-    "command": "caser_upper_initials",
-  },
+  {"caption": "Caser: lower sentence case", "command": "caser_lower_sentence_case"},
+  {"caption": "Caser: Title Sentence Case", "command": "caser_title_sentence_case"},
+  {"caption": "Caser: UPPER SENTENCE CASE", "command": "caser_upper_sentence_case"},
+  {"caption": "Caser: lowerCamelCase", "command": "caser_lower_camel_case"},
+  {"caption": "Caser: TitleCamelCase", "command": "caser_title_camel_case"},
+  {"caption": "Caser: lower_snake_case", "command": "caser_lower_snake_case"},
+  {"caption": "Caser: Title_snake_case", "command": "caser_title_snake_case"},
+  {"caption": "Caser: UPPER_SNAKE_CASE", "command": "caser_upper_snake_case"},
+  {"caption": "Caser: lower-kebab-case", "command": "caser_lower_kebab_case"},
+  {"caption": "Caser: Title-Kebab-Case", "command": "caser_title_kebab_case"},
+  {"caption": "Caser: UPPER-KEBAB-CASE", "command": "caser_upper_kebab_case"},
+  {"caption": "Caser: lower initials (li)", "command": "caser_lower_initials"},
+  {"caption": "Caser: upper initials (UI)", "command": "caser_upper_initials"},
 ]

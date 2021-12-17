@@ -61,6 +61,35 @@ def replace_by(view, edit, fun):
             continue
         view.replace(edit, region, fun(view.substr(region)))
 
+def to_case(val, typ):
+    if typ == 'lower_sentence_case':
+        return to_lower_sentence_case(val)
+    if typ == 'title_sentence_case':
+        return to_title_sentence_case(val)
+    if typ == 'upper_sentence_case':
+        return to_upper_sentence_case(val)
+    if typ == 'lower_camel_case':
+        return to_lower_camel_case(val)
+    if typ == 'title_camel_case':
+        return to_title_camel_case(val)
+    if typ == 'lower_snake_case':
+        return to_lower_snake_case(val)
+    if typ == 'title_snake_case':
+        return to_title_snake_case(val)
+    if typ == 'upper_snake_case':
+        return to_upper_snake_case(val)
+    if typ == 'lower_kebab_case':
+        return to_lower_kebab_case(val)
+    if typ == 'title_kebab_case':
+        return to_title_kebab_case(val)
+    if typ == 'upper_kebab_case':
+        return to_upper_kebab_case(val)
+    if typ == 'lower_initials':
+        return to_lower_initials(val)
+    if typ == 'upper_initials':
+        return to_upper_initials(val)
+    raise Exception('unknown case format {}'.format(typ))
+
 def cmd(name, fun):
     class cmd(sublime_plugin.TextCommand):
         def run(self, edit):
@@ -81,3 +110,16 @@ caser_title_kebab_case    = cmd('caser_title_kebab_case',    to_title_kebab_case
 caser_upper_kebab_case    = cmd('caser_upper_kebab_case',    to_upper_kebab_case)
 caser_lower_initials      = cmd('caser_lower_initials',      to_lower_initials)
 caser_upper_initials      = cmd('caser_upper_initials',      to_upper_initials)
+
+class caser_go_tag(sublime_plugin.TextCommand):
+    def run(self, edit, tags):
+        view = self.view
+        for region in view.sel():
+            if region.empty():
+                continue
+            view.replace(edit, region, to_go_tag(view.substr(region), tags))
+
+def to_go_tag(val, tags):
+    return '`{}`'.format(' '.join(
+        '{}:"{}"'.format(tag, to_case(val, typ)) for (tag, typ) in tags
+    ))

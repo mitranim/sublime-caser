@@ -12,4 +12,9 @@
   {"caption": "Caser: UPPER-KEBAB-CASE", "command": "caser_upper_kebab_case"},
   {"caption": "Caser: lower initials (li)", "command": "caser_lower_initials"},
   {"caption": "Caser: upper initials (UI)", "command": "caser_upper_initials"},
+  {
+    "caption": "Caser: Go tag",
+    "command": "caser_go_tag",
+    "args": {"tags": [["json", "lower_camel_case"], ["db", "lower_snake_case"]]},
+  },
 ]

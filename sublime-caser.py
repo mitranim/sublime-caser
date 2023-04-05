@@ -1,18 +1,13 @@
-import re
+import regex as re
 import sublime_plugin
 
 EDGE_RE = re.compile(r'''
-    [A-Z0-9]+(?=\W|_|$)                 # UPPER CASE
-    |
-    [A-Z0-9]+(?=[A-Z][a-z]|\W|_|$)      # ABBRCamelCase
-    |
-    [A-Z][a-z0-9]*(?=[A-Z]|\W|_|$)      # Title Case
-    |
-    [a-z0-9]+(?=[A-Z]|\W|_|$)           # lower case
-    |
-    [A-Z0-9]+(?=[a-z]|\W|_|$)           # ?
-    |
-    [A-Za-z0-9]+(?=\W|_|$)              # ?
+    # ABBRCamelCase
+    \p{Lu}+(?=\p{Lu}\p{Ll})
+    # CamelCase
+    |\p{Lu}+[\p{Ll}\d]*
+    # Other cases
+    |[\p{Ll}\d]+
 ''', re.VERBOSE)
 
 def to_lower_sentence_case(val): return ' '.join(m.group().lower() for m in EDGE_RE.finditer(val))
@@ -24,10 +19,10 @@ def to_lower_camel_case(val):
     if len(words) < 1:
         return ''
     words[0] = words[0].lower()
-    i = 1
-    while i < len(words):
-        words[i] = words[i].title()
-        i += 1
+    ind = 1
+    while ind < len(words):
+        words[ind] = words[ind].title()
+        ind += 1
     return ''.join(words)
 
 def to_title_camel_case(val): return ''. join(m.group().title()    for m in EDGE_RE.finditer(val))
@@ -39,10 +34,10 @@ def to_title_snake_case(val):
     if len(words) < 1:
         return ''
     words[0] = words[0].title()
-    i = 1
-    while i < len(words):
-        words[i] = words[i].lower()
-        i += 1
+    ind = 1
+    while ind < len(words):
+        words[ind] = words[ind].lower()
+        ind += 1
     return '_'.join(words)
 
 # def to_title_snake_case(val): return '_'.join(m.group().title()    for m in EDGE_RE.finditer(val))

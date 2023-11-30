@@ -54,7 +54,7 @@ See the [`sublime-caser.sublime-commands`](sublime-caser.sublime-commands) file 
 
 ## License
 
-https://en.wikipedia.org/wiki/WTFPL
+https://unlicense.org
 
 ## Misc
 
